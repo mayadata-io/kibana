@@ -32,16 +32,16 @@ import 'ui/kbn_top_nav';
 
 uiRoutes
   .when('/management', {
-    template: landingTemplate
+    redirectTo: '/discover'
   });
 
 uiRoutes
   .when('/management/:section', {
-    redirectTo: '/management'
+    redirectTo: '/discover'
   });
 
 require('ui/index_patterns/route_setup/load_default')({
-  whenMissingRedirectTo: '/management/kibana/index'
+  whenMissingRedirectTo: '/discover'
 });
 
 uiModules

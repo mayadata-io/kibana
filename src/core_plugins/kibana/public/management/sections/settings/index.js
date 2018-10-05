@@ -53,7 +53,7 @@ function destroyAdvancedSettings() {
 
 uiRoutes
   .when('/management/kibana/settings/:setting?', {
-    template: indexTemplate
+    redirectTo: '/discover'
   });
 
 uiModules.get('apps/management')
