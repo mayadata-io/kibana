@@ -34,7 +34,7 @@ const location = 'SavedObject view';
 
 uiRoutes
   .when('/management/kibana/objects/:service/:id', {
-    template: objectViewHTML
+    redirectTo: '/discover'
   });
 
 uiModules.get('apps/management')

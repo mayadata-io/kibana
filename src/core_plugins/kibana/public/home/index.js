@@ -59,3 +59,15 @@ routes.when('/home', getRoute());
 routes.when('/home/feature_directory', getRoute());
 routes.when('/home/tutorial_directory/:tab?', getRoute());
 routes.when('/home/tutorial/:id', getRoute());
+routes.when('/home', {
+  redirectTo: '/discover'
+});
+routes.when('/home/feature_directory', {
+  redirectTo: '/discover'
+});
+routes.when('/home/tutorial_directory/:tab?', {
+  redirectTo: '/discover'
+});
+routes.when('/home/tutorial/:id', {
+  redirectTo: '/discover'
+});
