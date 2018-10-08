@@ -39,3 +39,7 @@ uiRoutes.when('/dev_tools/console', {
   controller: 'SenseController',
   template
 });
+
+uiRoutes.when('/dev_tools/console', {
+  redirectTo: '/discover'
+});
