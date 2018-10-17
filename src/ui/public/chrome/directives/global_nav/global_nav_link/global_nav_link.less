@@ -1,5 +1,11 @@
 @import (reference) "~ui/styles/variables";
 
+.global_nav_root {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .global_nav_logo {
   display: inline-block;
 
@@ -17,6 +23,9 @@
   width: @global-nav-closed-width;
   height: @app-icon-height;
   line-height: @app-line-height;
+  background: rgb(19, 167, 223);
+  margin: 8px;
+  border-radius: 8px;
 
   &.is-global-nav-link-disabled {
     opacity: 0.5;
@@ -33,9 +42,11 @@
   &.active {
     background-color: @globalColorBlue;
 
+
     .global-nav-link__anchor {
       color: @white;
       text-decoration: none;
+      background: @globalColorBlue;
     }
   }
 }
@@ -50,6 +61,8 @@
     display: block;
     height: 100%;
     color: @globalColorWhite;
+    background: rgb(19, 167, 223);
+    border-radius: 8px;
 
     &:focus, &:hover {
       color: @globalColorWhite;
