@@ -18,7 +18,7 @@
  */
 
 import { savedObjectManagementRegistry } from '../../saved_object_registry';
-import objectIndexHTML from './_objects.html';
+// import objectIndexHTML from './_objects.html';
 import uiRoutes from 'ui/routes';
 import chrome from 'ui/chrome';
 import { toastNotifications } from 'ui/notify';
@@ -88,8 +88,8 @@ function destroyObjectsTable() {
 }
 
 uiRoutes
-  .when('/management/kibana/objects', { template: objectIndexHTML })
-  .when('/management/kibana/objects/:service', { redirectTo: '/management/kibana/objects' });
+  .when('/management/kibana/objects', { redirectTo: '/management/kibana/indices' })
+  .when('/management/kibana/objects/:service', { redirectTo: '/management/kibana/indices' });
 
 uiModules.get('apps/management')
   .directive('kbnManagementObjects', function () {

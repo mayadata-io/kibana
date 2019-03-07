@@ -24,7 +24,7 @@ import 'ui/field_editor';
 import uiRoutes from 'ui/routes';
 import { uiModules } from 'ui/modules';
 import appTemplate from './app.html';
-import landingTemplate from './landing.html';
+// import landingTemplate from './landing.html';
 import { management } from 'ui/management';
 import { FeatureCatalogueRegistryProvider, FeatureCatalogueCategory } from 'ui/registry/feature_catalogue';
 import { timefilter } from 'ui/timefilter';
@@ -32,16 +32,16 @@ import 'ui/kbn_top_nav';
 
 uiRoutes
   .when('/management', {
-    redirectTo: '/discover'
+    redirectTo: '/management/kibana/indices'
   });
 
 uiRoutes
   .when('/management/:section', {
-    redirectTo: '/discover'
+    redirectTo: '/management/kibana/indices'
   });
 
 require('ui/index_patterns/route_setup/load_default')({
-  whenMissingRedirectTo: '/discover'
+  whenMissingRedirectTo: '/management/kibana/indices'
 });
 
 uiModules

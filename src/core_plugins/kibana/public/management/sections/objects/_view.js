@@ -21,7 +21,7 @@ import _ from 'lodash';
 import angular from 'angular';
 import rison from 'rison-node';
 import { savedObjectManagementRegistry } from '../../saved_object_registry';
-import objectViewHTML from './_view.html';
+// import objectViewHTML from './_view.html';
 import uiRoutes from 'ui/routes';
 import { uiModules } from 'ui/modules';
 import { fatalError, toastNotifications } from 'ui/notify';
@@ -34,7 +34,7 @@ const location = 'SavedObject view';
 
 uiRoutes
   .when('/management/kibana/objects/:service/:id', {
-    redirectTo: '/discover'
+    redirectTo: '/management/kibana/indices'
   });
 
 uiModules.get('apps/management')

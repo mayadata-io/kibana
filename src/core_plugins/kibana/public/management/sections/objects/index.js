@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { management } from 'ui/management';
+// import { management } from 'ui/management';
 import './_view';
 import './_objects';
 import 'ace';
@@ -28,11 +28,11 @@ import { FeatureCatalogueRegistryProvider, FeatureCatalogueCategory } from 'ui/r
 // add the module deps to this module
 uiModules.get('apps/management');
 
-management.getSection('kibana').register('objects', {
-  display: 'Saved Objects',
-  order: 10,
-  url: '#/management/kibana/objects'
-});
+// management.getSection('kibana').register('objects', {
+//   display: 'Saved Objects',
+//   order: 10,
+//   url: '#/management/kibana/objects'
+// });
 
 FeatureCatalogueRegistryProvider.register(() => {
   return {

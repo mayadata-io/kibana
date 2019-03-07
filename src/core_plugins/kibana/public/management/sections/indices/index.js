@@ -41,12 +41,12 @@ const indexPatternsResolutions = {
 // add a dependency to all of the subsection routes
 uiRoutes
   .defaults(/management\/kibana\/indices/, {
-    redirectTo: '/discover'
+    resolve: indexPatternsResolutions
   });
 
 uiRoutes
   .defaults(/management\/kibana\/index/, {
-    redirectTo: '/discover'
+    resolve: indexPatternsResolutions
   });
 
 // wrapper directive, which sets some global stuff up like the left nav
