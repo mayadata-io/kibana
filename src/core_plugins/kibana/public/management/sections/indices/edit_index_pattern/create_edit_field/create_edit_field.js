@@ -22,7 +22,7 @@ import { RegistryFieldFormatEditorsProvider } from 'ui/registry/field_format_edi
 import { KbnUrlProvider } from 'ui/url';
 import uiRoutes from 'ui/routes';
 import { toastNotifications } from 'ui/notify';
-import template from './create_edit_field.html';
+// import template from './create_edit_field.html';
 
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
@@ -68,7 +68,7 @@ uiRoutes
   .when('/management/kibana/indices/:indexPatternId/field/:fieldName*', { mode: 'edit' })
   .when('/management/kibana/indices/:indexPatternId/create-field/', { mode: 'create' })
   .defaults(/management\/kibana\/indices\/[^\/]+\/(field|create-field)(\/|$)/, {
-    template,
+    // template,
     mapBreadcrumbs($route, breadcrumbs) {
       const { indexPattern } = $route.current.locals;
       return breadcrumbs.map(crumb => {
@@ -137,5 +137,6 @@ uiRoutes
       $scope.$on('$destroy', () => {
         destroyFieldEditor();
       });
-    }
+    },
+    redirectTo: '/management/kibana/indices',
   });

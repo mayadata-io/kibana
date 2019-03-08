@@ -37,17 +37,17 @@ export function IndicesEditSectionsProvider() {
         title: 'Fields',
         index: 'indexedFields',
         count: fieldCount.indexed
-      },
-      {
-        title: 'Scripted fields',
-        index: 'scriptedFields',
-        count: fieldCount.scripted
-      },
-      {
-        title: 'Source filters',
-        index: 'sourceFilters',
-        count: fieldCount.sourceFilters
       }
+      // {
+      //   title: 'Scripted fields',
+      //   index: 'scriptedFields',
+      //   count: fieldCount.scripted
+      // },
+      // {
+      //   title: 'Source filters',
+      //   index: 'sourceFilters',
+      //   count: fieldCount.sourceFilters
+      // }
     ];
   };
 }

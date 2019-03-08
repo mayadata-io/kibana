@@ -76,7 +76,7 @@ export class Table extends PureComponent {
   }
 
   render() {
-    const { indexPattern, items, editField } = this.props;
+    const { indexPattern, items } = this.props;
 
     const pagination = {
       initialPageSize: 10,
@@ -134,19 +134,19 @@ export class Table extends PureComponent {
         dataType: 'boolean',
         sortable: true,
         render: (value) => this.renderBooleanTemplate(value, 'Is excluded'),
-      },
-      {
-        name: '',
-        actions: [
-          {
-            name: 'Edit',
-            description: 'Edit',
-            icon: 'pencil',
-            onClick: editField,
-            type: 'icon',
-          },
-        ],
-        width: '40px',
+      // },
+      // {
+      //   name: '',
+      //   actions: [
+      //     {
+      //       name: 'Edit',
+      //       description: 'Edit',
+      //       icon: 'pencil',
+      //       onClick: editField,
+      //       type: 'icon',
+      //     },
+      //   ],
+      //   width: '40px',
       }
     ];
 
