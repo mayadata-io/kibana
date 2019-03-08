@@ -78,6 +78,7 @@ export default function (kibana) {
           url: `${kbnBaseUrl}#/discover`,
           description: 'interactively explore your data',
           icon: 'plugins/kibana/assets/discover.svg',
+          tooltip: 'Discover',
         }, {
           id: 'kibana:visualize',
           title: 'Visualize',
@@ -85,6 +86,7 @@ export default function (kibana) {
           url: `${kbnBaseUrl}#/visualize`,
           description: 'design data visualizations',
           icon: 'plugins/kibana/assets/visualize.svg',
+          tooltip: 'Visualize',
         }, {
           id: 'kibana:dashboard',
           title: 'Dashboard',
@@ -98,6 +100,7 @@ export default function (kibana) {
           subUrlBase: `${kbnBaseUrl}#/dashboard`,
           description: 'compose visualizations for much win',
           icon: 'plugins/kibana/assets/dashboard.svg',
+          tooltip: 'Dashboard',
         // },
         // {
         //   id: 'kibana:dev_tools',
@@ -113,6 +116,7 @@ export default function (kibana) {
           url: `${kbnBaseUrl}#/management`,
           description: 'define index patterns, change config, and more',
           icon: 'plugins/kibana/assets/settings.svg',
+          tooltip: 'Management',
           linkToLastSubUrl: false
         },
       ],
