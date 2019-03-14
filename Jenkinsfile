@@ -52,4 +52,3 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             echo "This will run only if failed"
         }
     }
-}
