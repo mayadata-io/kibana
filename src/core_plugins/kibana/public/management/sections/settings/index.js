@@ -17,10 +17,10 @@
  * under the License.
  */
 
-// import { management } from 'ui/management';
+import { management } from 'ui/management';
 import uiRoutes from 'ui/routes';
 import { uiModules } from 'ui/modules';
-// import indexTemplate from './index.html';
+import indexTemplate from './index.html';
 import { FeatureCatalogueRegistryProvider, FeatureCatalogueCategory } from 'ui/registry/feature_catalogue';
 
 import React from 'react';
@@ -53,7 +53,7 @@ function destroyAdvancedSettings() {
 
 uiRoutes
   .when('/management/kibana/settings/:setting?', {
-    redirectTo: '/discover'
+    template: indexTemplate
   });
 
 uiModules.get('apps/management')
@@ -74,11 +74,11 @@ uiModules.get('apps/management')
     };
   });
 
-// management.getSection('kibana').register('settings', {
-//   display: 'Advanced Settings',
-//   order: 20,
-//   url: '#/management/kibana/settings'
-// });
+management.getSection('kibana').register('settings', {
+  display: 'Advanced Settings',
+  order: 20,
+  url: '#/management/kibana/settings'
+});
 
 FeatureCatalogueRegistryProvider.register(() => {
   return {
