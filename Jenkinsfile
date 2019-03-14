@@ -11,7 +11,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
     stages {
       stage('create kibana-build dir'){
         steps {
-            script {
+            sh ''' 
                 set -xe
                 if ( -d "$HOME/kibana-build" );
                 then
@@ -36,6 +36,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 yarn kbn bootstrap
                 yarn build --skip-os-packages
                 mv /var/lib/jenkins/workspace/npmtest/target/ $HOME/kibana-build 
+                '''
             }
         }
     }
