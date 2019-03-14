@@ -13,14 +13,14 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
         steps {
             script {
                 set -xe
-                if [ -d "$HOME/kibana-build" ];
+                if ( -d "$HOME/kibana-build" );
                 then
                     echo "Kibana-build exits";
                     rm -r $HOME/kibana-build;
                     echo "Removed old build"
                 fi
                 
-                if [ ! -d "$HOME/kibana-build" ];
+                if ( ! -d "$HOME/kibana-build" );
                 then
                     echo "Create kibana-build dir";
                     mkdir -p $HOME/kibana-build
