@@ -30,6 +30,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 ls
                 echo $HOME
                 which node
+                node -v
                 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
                 nvm install 8.11.4
                 node -v
