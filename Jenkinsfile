@@ -32,8 +32,10 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 pwd 
                 ls
                 echo $HOME
-                wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+                [ -s "$NVM_DIR/nvm.sh" ]
                 "$NVM_DIR/nvm.sh"
+                [ -s "$NVM_DIR/bash_completion" ]
+                "$NVM_DIR/bash_completion"
                 which node
                 nvm use 8.11.4
                 node -v
