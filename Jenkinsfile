@@ -8,8 +8,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
           customWorkspace "/var/lib/jenkins/workspace/${REPO}-${BRANCH_NAME}"
       }
     }
-        environment {                                                                                                       
-                // Install gradle on jenkins slave/master during ansible provisioning                                   
+        environment {                                  
                  NVM_DIR="$HOME/.nvm"                                                                                                                                        
     } 
     stages {
@@ -33,9 +32,9 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 pwd 
                 ls
                 echo $HOME
+                wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
                 "$NVM_DIR/nvm.sh"
                 which node
-                nvm ls
                 nvm use 8.11.4
                 node -v
                 npm -v
