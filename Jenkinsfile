@@ -30,6 +30,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 ls
                 echo $HOME
                 which node
+                nvm install 8.11.4
                 node -v
                 npm -v
                 yarn -v
