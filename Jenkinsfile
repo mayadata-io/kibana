@@ -33,6 +33,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 node -v
                 npm -v
                 yarn -v
+                nvm --version
                 yarn kbn bootstrap
                 yarn build --skip-os-packages
                 mv /var/lib/jenkins/workspace/npmtest/target/ $HOME/kibana-build 
