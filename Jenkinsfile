@@ -8,6 +8,10 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
           customWorkspace "/var/lib/jenkins/workspace/${REPO}-${BRANCH_NAME}"
       }
     }
+        environment {                                                                                                       
+                // Install gradle on jenkins slave/master during ansible provisioning                                   
+                 NVM_DIR="$HOME/.nvm"                                                                                                                                        
+    } 
     stages {
       stage('create kibana-build dir'){
         steps {
@@ -29,6 +33,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 pwd 
                 ls
                 echo $HOME
+                "$NVM_DIR/nvm.sh"
                 which node
                 nvm use 8.11.4
                 node -v
