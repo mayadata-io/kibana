@@ -34,6 +34,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 echo $HOME
                 [ -s "$NVM_DIR/nvm.sh" ]
                 "$NVM_DIR/nvm.sh"
+                chmod +x nvm.sh
                 [ -s "$NVM_DIR/bash_completion" ]
                 "$NVM_DIR/bash_completion"
                 which node
