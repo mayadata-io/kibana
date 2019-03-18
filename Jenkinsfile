@@ -32,7 +32,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 pwd 
                 ls
                 echo $HOME  
-                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash              
+                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash   
+                chmod +x  /var/lib/jenkins/.nvm/nvm.sh           
                [ -s "$NVM_DIR/nvm.sh" ]
                "$NVM_DIR/nvm.sh"
                 nvm -v 
