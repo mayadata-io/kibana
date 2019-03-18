@@ -32,10 +32,12 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 pwd 
                 ls
                 echo $HOME
+                touch ~/.profile 
                 curl https://raw.github.com/creationix/nvm/master/install.sh | sh
                 source ~/.profile
                 nvm ls
                 nvm install 8.11.4
+                
 
             #    [ -s "$NVM_DIR/nvm.sh" ]
             #   "$NVM_DIR/nvm.sh"
