@@ -33,7 +33,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 ls
                 echo $HOME
                 curl https://raw.github.com/creationix/nvm/master/install.sh | sh
-                touch ~/.profile >> [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+                touch ~/.profile
+                echo " [[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh" >> ~/.profile
              #   curl https://raw.github.com/creationix/nvm/master/install.sh | sh
                 source ~/.profile
                 nvm ls
