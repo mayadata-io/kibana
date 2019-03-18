@@ -31,8 +31,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 echo $PATH
                 pwd 
                 ls
-                echo $HOME                
-
+                echo $HOME  
+                curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash              
                [ -s "$NVM_DIR/nvm.sh" ]
                "$NVM_DIR/nvm.sh"
                 nvm -v 
