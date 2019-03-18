@@ -34,7 +34,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 echo $HOME
                 [ -s "$NVM_DIR/nvm.sh" ]
                 "$NVM_DIR/nvm.sh"
-                vnm -v 
+                nvm -v 
                 which node
                 nvm use 8.11.4
                 node -v
