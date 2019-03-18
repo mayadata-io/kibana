@@ -32,15 +32,13 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 pwd 
                 ls
                 echo $HOME
+                curl https://raw.github.com/creationix/nvm/master/install.sh | sh
+                source ~/.profile
+                nvm ls
+                nvm install 8.11.4
 
-                touch ~/.profile && source ~/.profile;
-                nvm current || echo "SSH NVM is being installed" &&  touch ~/.profile && curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh -o install_nvm.sh && bash install_nvm.sh && source ~/.profile
-                echo "checking nvm"
-                bash ~/.nvm/nvm.sh;
-                nvm --version
-
-                [ -s "$NVM_DIR/nvm.sh" ]
-                "$NVM_DIR/nvm.sh"
+            #    [ -s "$NVM_DIR/nvm.sh" ]
+            #   "$NVM_DIR/nvm.sh"
                 nvm -v 
                 which node
                 nvm use 8.11.4
