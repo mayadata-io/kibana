@@ -42,7 +42,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 nvm install v8.11.4         # first time only
                 set +x
                 nvm use 8.11.4              # Use nvm v8.11.4 version 
-                nvm ls
+            #    nvm ls
                 
 
         
@@ -57,7 +57,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 nvm --version
                 yarn kbn bootstrap
                 yarn build --skip-os-packages
-                mv /var/lib/jenkins/workspace/npmtest/target/ $HOME/kibana-build 
+            #    mv /var/lib/jenkins/workspace/npmtest/target/ $HOME/kibana-build 
                 '''
             }
         }
