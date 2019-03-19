@@ -36,7 +36,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 chmod +x  /var/lib/jenkins/.nvm/nvm.sh           
                [ -s "$NVM_DIR/nvm.sh" ]
                "$NVM_DIR/nvm.sh"
-                nvm -v 
+                nvm --version 
                 which node
                 nvm use 8.11.4
                 node -v
