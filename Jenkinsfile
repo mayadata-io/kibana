@@ -34,15 +34,16 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 echo $HOME  
                 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash   
                 export NVM_DIR="$HOME/.nvm" # set local path to NVM
-                . ~/.nvm/nvm.sh             # add NVM into the Shell session
-                nvm install v8.11.4         # first time only
+            #    . ~/.nvm/nvm.sh             # add NVM into the Shell session
+            #    nvm install v8.11.4         # first time only
+                set +x
+            #   nvm ls
                 nvm use 8.11.4              # Use nvm v8.11.4 version 
 
         
             #   [ -s "$NVM_DIR/nvm.sh" ]
             #   "$NVM_DIR/nvm.sh"
                 nvm --version 
-                nvm list
                 which node
             #   nvm use 8.11.4
                 node -v
