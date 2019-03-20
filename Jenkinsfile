@@ -39,8 +39,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             #   export NVM_DIR="$HOME/.nvm" # set local path to NVM
 
 
-                nvm install v8.11.4         # first time only
-                set +x
+            #    nvm install v8.11.4         # first time only
+            #    set +x
                 nvm use 8.11.4              # Use nvm v8.11.4 version
 
             #    nvm ls
@@ -52,13 +52,13 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             #   nvm use 8.11.4
                 node -v
                 npm -v
-                 nvm --version
+                nvm --version
                 yarn -v
-                script '''
+                script {
                 yarn kbn bootstrap
                 yarn start
                 yarn build --skip-os-packages
-                    '''
+                    }
             #   mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
                 mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/
 
