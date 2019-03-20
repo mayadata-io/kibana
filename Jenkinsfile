@@ -23,7 +23,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                     echo "Removed old build"
                 fi
                 
-                if [ ! -d "$HOME/kibana-build" ];
+                if [! -d "$HOME/kibana-build" ];
                 then
                     echo "Create kibana-build dir";
                     mkdir -p $HOME/kibana-build
@@ -56,6 +56,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 yarn kbn bootstrap
                 yarn build --skip-os-packages
                     }
+            
             #   mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
                 mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/
 
