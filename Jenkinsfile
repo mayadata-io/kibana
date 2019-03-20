@@ -33,7 +33,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 ls
                 echo $HOME  
             #   curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash   
-                wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+            #   wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
                 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             
             #   export NVM_DIR="$HOME/.nvm" # set local path to NVM
@@ -57,8 +57,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                  yarn build --skip-os-packages
                     
             
-            #   mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
-            sh ' mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/ '
+               mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
+            #    sh ' mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/ '
 
                 '''
             }
