@@ -58,7 +58,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                     
             
             #   mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
-                mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/
+            sh ' mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/ '
 
                 '''
             }
