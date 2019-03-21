@@ -28,6 +28,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                     echo "Create kibana-build dir";
                     mkdir -p $HOME/kibana-build
                 fi
+
                 echo $PATH
                 pwd 
                 ls
@@ -57,7 +58,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                  yarn build --skip-os-packages
                     
             sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
-
+                tree |grep npmtest
             #  mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
             #  sh ' mv '/var/lib/jenkins/workspace/npmtest/target/'*  $HOME/kibana-build/ '
             #  sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
