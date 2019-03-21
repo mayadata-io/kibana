@@ -56,7 +56,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 
                  yarn kbn bootstrap
                  yarn build --skip-os-packages
-                  tree |grep npmtest
+                #  tree |grep npmtest
                     
                 sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
 
