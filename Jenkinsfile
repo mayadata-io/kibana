@@ -15,7 +15,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
       stage('create kibana-build dir'){
         steps {
             sh ''' 
-                set -e
+                set -x
                 if [ -d "$HOME/kibana-build" ];
                 then
                     echo "Kibana-build exits";
