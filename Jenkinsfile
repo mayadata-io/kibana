@@ -10,7 +10,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
     }
        // environment {                                  
         //         NVM_DIR="$HOME/.nvm"                                                                                                                                        
-    } 
+     
     stages {
       stage('create kibana-build dir'){
         steps {
@@ -75,7 +75,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             }
         }
     }
-}
+  
     post{
         always{
             echo "This will always run"
@@ -87,3 +87,5 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             echo "This will run only if failed"
         }
     }
+  }
+    
