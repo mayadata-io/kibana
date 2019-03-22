@@ -8,8 +8,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
           customWorkspace "/var/lib/jenkins/workspace/${REPO}-${BRANCH_NAME}"
       }
     }
-        environment {                                  
-                 NVM_DIR="$HOME/.nvm"                                                                                                                                        
+       // environment {                                  
+        //         NVM_DIR="$HOME/.nvm"                                                                                                                                        
     } 
     stages {
       stage('create kibana-build dir'){
@@ -35,12 +35,12 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 echo $HOME  
             #   curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash   
             #   wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
-                [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            #   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             
             #   export NVM_DIR="$HOME/.nvm" # set local path to NVM
             #    nvm install v8.11.4         # first time only
             #    set +x
-                nvm use 8.11.4              # Use nvm v8.11.4 version
+            #    nvm use 8.11.4              # Use nvm v8.11.4 version
 
             #    nvm ls
             #   [ -s "$NVM_DIR/nvm.sh" ]
