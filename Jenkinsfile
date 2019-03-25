@@ -10,7 +10,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
     }
          environment {                                  
                 NVM_DIR="$HOME/.nvm"                                                                                                                                        
-     
+         }
     stages {
       stage('create kibana-build dir'){
         steps {
@@ -64,9 +64,11 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             #    TEST = sh(returnStdout: true, script: "mv  /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
             #    echo $TEST
 
-
+            Test = sh(returnStdout: true, script: "ls -Art /var/lib/jenkins/workspace/npmtest/target/")
+            echo $Test
+            mv $Test  $HOME/kibana-build/
                
-             mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
+        #     mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
         #    sh ' mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build/ '
         #    sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
         #    mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
