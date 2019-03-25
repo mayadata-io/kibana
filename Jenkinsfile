@@ -54,8 +54,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 nvm --version
                 yarn -v
                 
-                 yarn kbn bootstrap
-                 yarn build --skip-os-packages
+               #  yarn kbn bootstrap
+                # yarn build --skip-os-packages
                  
                 pwd
 
