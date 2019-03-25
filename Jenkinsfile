@@ -63,7 +63,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
 
         #    Test = sh(returnStdout: true, script: "ls -Art /var/lib/jenkins/workspace/npmtest/target/")
         #    echo $Test
-            sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/$Test   $HOME/kibana-build")
+            sh (returnStdout: true, script: "mv $Test  $HOME/kibana")
+         #   sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/$Test   $HOME/kibana-build")
 
              
         #    mv /var/lib/jenkins/workspace/npmtest/target/$Test  $HOME/kibana-build/
