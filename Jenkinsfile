@@ -56,7 +56,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 
                  yarn kbn bootstrap
                  yarn build --skip-os-packages
-                 tree 
+                 
                 pwd
 
 
