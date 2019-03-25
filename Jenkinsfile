@@ -42,7 +42,7 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
             #    set +x
                 nvm use 8.11.4              # Use nvm v8.11.4 version
 
-                nvm ls
+            #   nvm ls
             #   [ -s "$NVM_DIR/nvm.sh" ]
             #   "$NVM_DIR/nvm.sh"
 
@@ -56,22 +56,21 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 
                  yarn kbn bootstrap
                  yarn build --skip-os-packages
-                #  tree |grep npmtest
+                 tree 
                 pwd
 
 
-             #   cp -rv  "/var/lib/jenkins/workspace/npmtest/target/."  $HOME/kibana-build/    
-            #    TEST = sh(returnStdout: true, script: "mv  /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
-            #    echo $TEST
 
-            Test = sh(returnStdout: true, script: "ls -Art /var/lib/jenkins/workspace/npmtest/target/")
-            echo $Test
-            mv /var/lib/jenkins/workspace/npmtest/target/$Test  $HOME/kibana-build/
+        #    Test = sh(returnStdout: true, script: "ls -Art /var/lib/jenkins/workspace/npmtest/target/")
+        #    echo $Test
+            sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/$Test   $HOME/kibana-build")
+
+             
+        #    mv /var/lib/jenkins/workspace/npmtest/target/$Test  $HOME/kibana-build/
                
-        #     mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
-        #    sh ' mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build/ '
+
+        #     mv ls -Art /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
         #    sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
-        #    mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
 
                 '''
             }
