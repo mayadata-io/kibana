@@ -64,7 +64,8 @@ export class Form extends PureComponent {
     return null;
   }
 
-  renderCategory(category, settings, totalSettings) {
+  // renderCategory(category, settings, totalSettings) { //No use of totalSettings
+  renderCategory(category, settings) {
     return (
       <Fragment key={category}>
         <EuiPanel paddingSize="l">
@@ -74,7 +75,8 @@ export class Form extends PureComponent {
                 <EuiFlexItem grow={false}>
                   <h2>{getCategoryName(category)}</h2>
                 </EuiFlexItem>
-                {this.renderClearQueryLink(totalSettings, settings.length)}
+                {/* Remove Clear Search Link */}
+                {/* {this.renderClearQueryLink(totalSettings, settings.length)} */}
               </EuiFlexGroup>
             </EuiText>
             <EuiSpacer size="m" />

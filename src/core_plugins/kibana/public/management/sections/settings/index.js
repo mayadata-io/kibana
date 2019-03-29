@@ -62,7 +62,7 @@ uiModules.get('apps/management')
       restrict: 'E',
       link: function ($scope) {
         config.watchAll(() => {
-          updateAdvancedSettings($scope, config, $route.current.params.setting || '');
+          updateAdvancedSettings($scope, config, $route.current.params.setting || 'discover'); //Set current settings to Discover
         }, $scope);
 
         $scope.$on('$destroy', () => {

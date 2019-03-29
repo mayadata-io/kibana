@@ -30,7 +30,7 @@ import {
 } from '@elastic/eui';
 
 import { CallOuts } from './components/call_outs';
-import { Search } from './components/search';
+// import { Search } from './components/search'; //No use of Search
 import { Form } from './components/form';
 
 import { getAriaName, toEditableConfig, DEFAULT_CATEGORY } from './lib';
@@ -130,7 +130,8 @@ export class AdvancedSettings extends Component {
   }
 
   render() {
-    const { filteredSettings, query } = this.state;
+    // const { filteredSettings, query } = this.state; //No use of query
+    const { filteredSettings } = this.state;
 
     return (
       <div className="advancedSettings">
@@ -140,13 +141,14 @@ export class AdvancedSettings extends Component {
               <h1>Settings</h1>
             </EuiText>
           </EuiFlexItem>
-          <EuiFlexItem>
+          {/* Hide Search bar */}
+          {/* <EuiFlexItem>
             <Search
               query={query}
               categories={this.categories}
               onQueryChange={this.onQueryChange}
             />
-          </EuiFlexItem>
+          </EuiFlexItem> */}
         </EuiFlexGroup>
         <EuiSpacer size="m" />
         <CallOuts/>
