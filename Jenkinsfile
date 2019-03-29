@@ -57,7 +57,8 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                #  yarn kbn bootstrap
                 # yarn build --skip-os-packages
                  
-                pwd
+            sh "cd /var/lib/jenkins/workspace/"
+            sh "ls"
 
 
 
