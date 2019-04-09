@@ -38,39 +38,25 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
             
             #   export NVM_DIR="$HOME/.nvm" # set local path to NVM
-            #    nvm install v8.11.4         # first time only
-            #    set +x
+            #   nvm install v8.11.4         # first time only
                 nvm use 8.11.4              # Use nvm v8.11.4 version
-
-            #   nvm ls
+                nvm ls
             #   [ -s "$NVM_DIR/nvm.sh" ]
             #   "$NVM_DIR/nvm.sh"
 
                 nvm --version 
                 which node
-            #   nvm use 8.11.4
                 node -v
                 npm -v
                 nvm --version
                 yarn -v
                 
-                 yarn kbn bootstrap
+                yarn kbn bootstrap
                 yarn build --skip-os-packages
                  
-
-        #    Test = sh(returnStdout: true, script: "ls -Art /var/lib/jenkins/workspace/npmtest/target/")
-        #    echo $Test
-        #   sh (returnStdout: true, script: "mv $Test  $HOME/kibana")
         #   sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/$Test   $HOME/kibana-build")
-
-             
-            mv /var/lib/jenkins/workspace/kibana-kibana_jenkinsfile/target/$Test  $HOME/kibana-build/
-               
-
-        #     mv ls -Art /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build
-        #    sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/  $HOME/kibana-build")
-
-                '''
+            mv /var/lib/jenkins/workspace/kibana-kibana_jenkinsfile/target/$Test  $HOME/kibana-build/   
+             '''
             }
         }
     }
