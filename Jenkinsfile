@@ -53,8 +53,8 @@ def DOCKER_IMAGE = ""
                 nvm --version
                 yarn -v
                 
-            #    yarn kbn bootstrap
-             #   yarn build --skip-os-packages
+                yarn kbn bootstrap
+                yarn build --skip-os-packages
                  
         #   sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/$Test   $HOME/kibana-build")
             mv /var/lib/jenkins/workspace/kibana-kibana_jenkinsfile/target/$Test  $HOME/kibana-build/   
