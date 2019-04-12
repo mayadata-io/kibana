@@ -1,6 +1,8 @@
 def ORG = "mayadataio"
 def REPO = "kibana"
 def BRANCH_NAME = BRANCH_NAME.toLowerCase()
+def DOCKER_HUB_REPO = "https://index.docker.io/v1/"
+def DOCKER_IMAGE = ""
   pipeline {
     agent {
       label {
@@ -51,14 +53,36 @@ def BRANCH_NAME = BRANCH_NAME.toLowerCase()
                 nvm --version
                 yarn -v
                 
-                yarn kbn bootstrap
-                yarn build --skip-os-packages
+            #    yarn kbn bootstrap
+             #   yarn build --skip-os-packages
                  
         #   sh(returnStdout: true, script: "mv /var/lib/jenkins/workspace/npmtest/target/$Test   $HOME/kibana-build")
             mv /var/lib/jenkins/workspace/kibana-kibana_jenkinsfile/target/$Test  $HOME/kibana-build/   
              '''
             }
         }
+        stage ('Build'){
+            steps{
+                script{
+                       	 GIT_SHA = sh(
+		                 returnStdout: true,
+				 script: "git log -n 1 --pretty=format:'%h'"
+				).trim()
+
+		    sh 'env > env.txt'
+		    for (String i : readFile('env.txt').split("\r?\n")) {
+		        println i
+		    }
+
+                    if (env.BRANCH_NAME == 'kibana_jenkinsfile'){
+                        echo "Starting build for ${env.BRANCH_NAME} branch"
+                        DOCKER_IMAGE = docker.build("${ORG}/${REPO}:${env.BRANCH_NAME}-${GIT_SHA}") 
+
+                    }
+                }
+            }
+        }
+
     }
   
     post{
