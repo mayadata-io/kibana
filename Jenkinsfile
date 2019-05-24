@@ -56,7 +56,6 @@ pipeline {
                """
              }   
            }
-        }  
             echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
             BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
             build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true 
