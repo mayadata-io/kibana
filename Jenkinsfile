@@ -56,9 +56,7 @@ pipeline {
                """
              }   
            }
-            echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
-            BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
-            build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true 
+            
           }      
         }        
       }
@@ -71,7 +69,7 @@ pipeline {
                 """
                 sh "git tag -l"
                 sh """
-                  git push https://${env.user}:${env.pass}@github.com/mayadata-io/maya-io-server.git --tag
+                  git push git@github.com:mayadata-io/kibana.git --tag
                    """
              }
           }
@@ -82,8 +80,14 @@ pipeline {
           script {
              if (env.BRANCH_NAME == 'mo-kibana') {
                 sh(returnStdout: true, script: "echo ${BN} > $HOME/kibana-build/${env.BRANCH_NAME}/ver")
-             } else (env.BRANCH_NAME == 'mo-kibana') {
-             sh(returnStdout: true, script: "echo ${GIT_SHA} > $HOME/kibana-build/${env.BRANCH_NAME}/ver")
+                echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
+                BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
+                build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true 
+             } else (env.BRANCH_NAME == 'staging-mo-kibana') {
+                sh(returnStdout: true, script: "echo ${GIT_SHA} > $HOME/kibana-build/${env.BRANCH_NAME}/ver")
+                echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
+                BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
+                build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true 
              }  
           }
         }
