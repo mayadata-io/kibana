@@ -23,9 +23,10 @@ pipeline {
       }
     stage(‘build’) {
       steps {
+        script {
+        if (env.BRANCH_NAME == 'staging-mo-kibana' || env.BRANCH_NAME == 'mo-kibana' || env.BRANCH_NAME.startsWith('alpha-r')){ 
          nodejs(nodeJSInstallationName: 'node') {
-             sh """
-           if (env.BRANCH_NAME == 'staging-mo-kibana' || env.BRANCH_NAME == 'mo-kibana' || env.BRANCH_NAME.startsWith('alpha-r')) {             
+             sh """            
                 if [ -d "$HOME/kibana-build/${env.BRANCH_NAME}" ];
                 then
                   echo "kibana-build exits";
@@ -45,18 +46,22 @@ pipeline {
                 yarn kbn bootstrap
                 yarn build --skip-os-packages
                 mv /var/lib/jenkins/workspace/npmtest/target/ $HOME/kibana-build/${env.BRANCH_NAME}/
+                """
+               }
           } else {
+            nodejs(nodeJSInstallationName: 'node') {
+            sh"""
                yarn kbn bootstrap
                yarn build --skip-os-packages
-               
-             } 
-             """ 
+               """
+             }   
             }
-          script {    
+          }
+        }  
             echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
             BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
-            build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true     
-          }
+            build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true 
+          }      
         }        
       }
     stage ('Adding git-tag for master') {
