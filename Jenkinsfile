@@ -81,7 +81,7 @@ pipeline {
              if (env.BRANCH_NAME == 'mo-kibana') {
                 sh(returnStdout: true, script: "echo ${BN} > $HOME/kibana-build/${env.BRANCH_NAME}/ver")
              } else (env.BRANCH_NAME == 'mo-kibana') {
-             sh(returnStdout: true, script: "echo ${GIT_SHA} > $HOME/kibana-build/${env.BRANCH_NAME}/ver"
+             sh(returnStdout: true, script: "echo ${GIT_SHA} > $HOME/kibana-build/${env.BRANCH_NAME}/ver")
              }  
           }
         }
