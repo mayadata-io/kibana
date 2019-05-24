@@ -59,7 +59,6 @@ pipeline {
           }
         }        
       }
-    }
     stage ('Adding git-tag for master') {
         steps {
           script {
@@ -85,8 +84,8 @@ pipeline {
              }  
           }
         }
-      }      
-  }
+      } 
+   }     
       post {
         always {
             echo 'This will always run'
