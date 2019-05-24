@@ -52,11 +52,10 @@ pipeline {
                yarn kbn bootstrap
                yarn build --skip-os-packages
                """
-          echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
+             }   
+            echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
                        BUILD_JOB = sh (script: "echo ../kibana-docker/${BRANCH_NAME}", returnStdout: true).trim()
-                       build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true
-                    } else {
-                       echo  "INFO: DO NOT TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER"     
+                       build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true     
           }
         }        
       }
