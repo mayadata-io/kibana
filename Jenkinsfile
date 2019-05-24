@@ -55,8 +55,7 @@ pipeline {
                yarn build --skip-os-packages
                """
              }   
-            }
-          }
+           }
         }  
             echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
             BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
@@ -89,8 +88,7 @@ pipeline {
              }  
           }
         }
-      } 
-   }     
+      }      
       post {
         always {
             echo 'This will always run'
