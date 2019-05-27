@@ -30,7 +30,7 @@ pipeline {
                 if [ -d "$HOME/kibana-build/${env.BRANCH_NAME}" ];
                 then
                   echo "kibana-build exits";
-                  rm -r $HOME/kibana-build/*;
+                  rm -r $HOME/kibana-build/${env.BRANCH_NAME}/*;
                   echo "removed old build"
                 fi
                 
@@ -83,7 +83,7 @@ pipeline {
                 echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
                 BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
                 build job: "${BUILD_JOB}", propagate: true, quietPeriod: 2,  wait: true 
-             } else (env.BRANCH_NAME == 'staging-mo-kibana') {
+             } else if(env.BRANCH_NAME == 'staging-mo-kibana') {
                 sh(returnStdout: true, script: "echo ${GIT_SHA} > $HOME/kibana-build/${env.BRANCH_NAME}/ver")
                 echo "INFO: TRIGGER DOWNSTREAM BUILD FOR KIBANA-DOCKER, of branch=${env.BRANCH_NAME}"
                 BUILD_JOB = sh (script: "echo ../kibana-docker/${env.BRANCH_NAME}", returnStdout: true).trim()
