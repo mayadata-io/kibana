@@ -31,6 +31,31 @@ export function jobs(server) {
     };
   }
 
+  function getUsernameFromRequest(request) {
+    const headerKey = "username";
+    let usernameFromRequestHeader = "invalid";
+    const cookie = request.headers.cookie;
+    if (cookie) {
+      // split and trim the white spaces of each element in cookie list
+      const cookieList = cookie.split(';').map(str => str.trim());
+      for (let i = 0; i < cookieList.length; i++) {
+        const keyValue = cookieList[i].split('=');
+        if (keyValue[0] === headerKey) {
+          usernameFromRequestHeader = keyValue[1];
+          break;
+        }
+      }
+    }
+
+    // If cookie is not present in request headers then we will check
+    // on headers.
+    // if (usernameFromRequestHeader === "invalid" && headerKey in request.headers) {
+    //   usernameFromRequestHeader = request.headers[headerKey];
+    // }
+
+    return usernameFromRequestHeader.toLowerCase();
+  }
+
   // list jobs in the queue, paginated
   server.route({
     path: `${mainEntry}/list`,
@@ -39,8 +64,9 @@ export function jobs(server) {
       const page = parseInt(request.query.page) || 0;
       const size = Math.min(100, parseInt(request.query.size) || 10);
       const jobIds = request.query.ids ? request.query.ids.split(',') : null;
+      const usernameFromCookie = getUsernameFromRequest(request);
 
-      const results = jobsQuery.list(request.pre.management.jobTypes, request.pre.user, page, size, jobIds);
+      const results = jobsQuery.list(request.pre.management.jobTypes, request.pre.user, page, size, jobIds, usernameFromCookie);
       reply(results);
     },
     config: getRouteConfig(),
@@ -51,7 +77,9 @@ export function jobs(server) {
     path: `${mainEntry}/count`,
     method: 'GET',
     handler: (request, reply) => {
-      const results = jobsQuery.count(request.pre.management.jobTypes, request.pre.user);
+      const usernameFromCookie = getUsernameFromRequest(request);
+
+      const results = jobsQuery.count(request.pre.management.jobTypes, request.pre.user, usernameFromCookie);
       reply(results);
     },
     config: getRouteConfig(),
@@ -63,8 +91,9 @@ export function jobs(server) {
     method: 'GET',
     handler: (request, reply) => {
       const { docId } = request.params;
+      const usernameFromCookie = getUsernameFromRequest(request);
 
-      jobsQuery.get(request.pre.user, docId, { includeContent: true })
+      jobsQuery.get(request.pre.user, docId, { includeContent: true }, usernameFromCookie)
         .then((doc) => {
           if (!doc) {
             return reply(boom.notFound());
@@ -92,8 +121,9 @@ export function jobs(server) {
     method: 'GET',
     handler: async (request, reply) => {
       const { docId } = request.params;
+      const usernameFromCookie = getUsernameFromRequest(request);
 
-      const response = await jobResponseHandler(request.pre.management.jobTypes, request.pre.user, reply, { docId });
+      const response = await jobResponseHandler(request.pre.management.jobTypes, request.pre.user, reply, { docId }, usernameFromCookie);
       if (!response.isBoom) {
         response.header('accept-ranges', 'none');
       }

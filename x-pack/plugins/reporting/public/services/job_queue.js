@@ -6,6 +6,7 @@
 
 import url from 'url';
 import { uiModules } from 'ui/modules';
+// import cookie from 'react-cookies'
 import { addSystemApiHeader } from 'ui/system_api';
 
 const module = uiModules.get('xpack/reporting');
@@ -19,6 +20,10 @@ module.service('reportingJobQueue', ($http) => {
         pathname: `${baseUrl}/list`,
         query: { page }
       };
+
+      // if cookie is not present in request headers, then we will
+      // get the username from cookie and add it to header
+      // console.log("hello", cookie.load('username'))
 
       const headers = addSystemApiHeader({});
       return $http.get(url.format(urlObj), { headers })

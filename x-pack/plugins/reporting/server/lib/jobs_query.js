@@ -51,8 +51,13 @@ function jobsQueryFn(server) {
   }
 
   return {
-    list(jobTypes, user, page = 0, size = defaultSize, jobIds) {
+    list(jobTypes, user, page = 0, size = defaultSize, jobIds, usernameFromCookie) {
       const username = getUsername(user);
+
+      if (!usernameFromCookie) {
+        usernameFromCookie = "invalid";
+      }
+      // console.log("list - username", usernameFromCookie)
 
       const body = {
         size,
@@ -64,6 +69,12 @@ function jobsQueryFn(server) {
                 must: [
                   { terms: { jobtype: jobTypes } },
                   { term: { created_by: username } },
+                  { term: { indexpatternid: usernameFromCookie } },
+                  // not using prefix or regexp as cookie can be edited or passing the header externally
+                  // as single character only will also take all the users starting with that character.
+                  // suppose header as "username: t" will list jobs of all the users (username) starting
+                  // with t
+                  // { prefix: { indexpatternid: '41bccb50' } },
                 ]
               }
             }
@@ -80,8 +91,13 @@ function jobsQueryFn(server) {
       return getHits(execQuery('search', body));
     },
 
-    count(jobTypes, user) {
+    count(jobTypes, user, usernameFromCookie) {
       const username = getUsername(user);
+
+      if (!usernameFromCookie) {
+        usernameFromCookie = "invalid";
+      }
+      // console.log("count - username", usernameFromCookie)
 
       const body = {
         query: {
@@ -91,6 +107,8 @@ function jobsQueryFn(server) {
                 must: [
                   { terms: { jobtype: jobTypes } },
                   { term: { created_by: username } },
+                  { term: { indexpatternid: usernameFromCookie } },
+                  // { prefix: { indexpatternid: 'testabc' } },
                 ]
               }
             }
@@ -105,10 +123,15 @@ function jobsQueryFn(server) {
         });
     },
 
-    get(user, id, opts = {}) {
+    get(user, id, opts = {}, usernameFromCookie) {
       if (!id) return Promise.resolve();
 
       const username = getUsername(user);
+
+      if (!usernameFromCookie) {
+        usernameFromCookie = "invalid";
+      }
+      // console.log("get - username", usernameFromCookie)
 
       const body = {
         query: {
@@ -117,7 +140,9 @@ function jobsQueryFn(server) {
               bool: {
                 must: [
                   { term: { _id: id } },
-                  { term: { created_by: username } }
+                  { term: { created_by: username } },
+                  { term: { indexpatternid: usernameFromCookie } },
+                  // { prefix: { indexpatternid: 'testabc' } },
                 ],
               }
             }
